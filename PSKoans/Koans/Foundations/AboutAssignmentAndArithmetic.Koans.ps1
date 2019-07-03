@@ -43,7 +43,7 @@ Describe 'Assignment Operator' {
     }
 
     It 'can assign multiple values to multiple variables' {
-        $Var1, $Var2 = @( "__", "__")
+        $Var1, $Var2 = @( '____', '____')
         $Var1 | Should -Be "Correct"
         $Var2 | Should -Be "Incorrect"
     }
@@ -63,8 +63,8 @@ Describe 'Arithmetic Operators' {
         }
 
         It 'can be used to concatenate strings' {
-            __ | Should -Be ('hello' + 'world')
             'My name is ' + 'Jim' | Should -Be 'My name is Jim'
+            '____' | Should -Be ('hello' + 'world')
         }
 
         It 'can be used to create arrays' {
@@ -83,12 +83,12 @@ Describe 'Arithmetic Operators' {
             '10.5' + 11 | Should -Be 21.5 # Or should it?
 
             __ | Should -Be (11 + '12.5')
-            12.21 + 'FILL_ME_IN' -eq 23.43 | Should -BeTrue
+            12.21 + '____' -eq 23.43 | Should -BeTrue
 
             # Adding items into typed arrays will also cause the resulting value to be converted
             [int[]] $Array = @(1, 2, 3, 4, 5)
             $Array += '17'
-            __ | Should -Be $Array
+            ____ | Should -Be $Array
         }
     }
     Context 'Subtraction' {
@@ -117,8 +117,8 @@ Describe 'Arithmetic Operators' {
         }
 
         It 'can also be used on strings' {
-            'A' * 4 -eq 'FILL_ME_IN' | Should -BeTrue
-            __ * 4 -eq 'NANANANA' | Should -BeTrue
+            'A' * 4 -eq '____' | Should -BeTrue
+            '____' * 4 -eq 'NANANANA' | Should -BeTrue
         }
     }
 
@@ -151,12 +151,12 @@ Describe 'Arithmetic Operators' {
                 $String = 'hello!'
                 $String % 4
                 # Only a partially matching phrase from the error message is necessary.
-            }  | Should -Throw -ExpectedMessage __
+            }  | Should -Throw -ExpectedMessage '____'
             {
                 # If you have trouble, try doing something similar in the console to see what happens.
                 $Array = 1, 10, 20
                 $Array % 4
-            } | Should -Throw -ExpectedMessage __
+            } | Should -Throw -ExpectedMessage '____'
         }
     }
 }

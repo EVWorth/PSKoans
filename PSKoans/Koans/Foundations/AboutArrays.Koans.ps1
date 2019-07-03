@@ -41,7 +41,7 @@ Describe 'Arrays' {
         )
 
         # Where is index 4 in the above array?
-        __ | Should -Be $Names[4]
+        '____' | Should -Be $Names[4]
     }
 
     It 'allows the collection to be split into multiple parts' {
@@ -57,7 +57,7 @@ Describe 'Arrays' {
         $Jim, $Ashley, $Others = $Ages
 
         # What would be stored in $Others?
-        __ | Should -Be $Others
+        ____ | Should -Be $Others
 
         <#
             If you know the contents of the array and want to skip specific elements, you can
@@ -100,9 +100,9 @@ Describe 'Arrays' {
         $Array = 1, 2, 3, 4
 
         # It allows negative indexes, but what about indexes out of range?
-        __ | Should -Be $Array[4]
+        $____ | Should -Be $Array[4]
 
         # What about undefined negative indexes?
-        __ | Should -Be $Array[-10]
+        $____ | Should -Be $Array[-10]
     }
 }
