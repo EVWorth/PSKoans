@@ -111,7 +111,7 @@ Describe 'Hashtables' {
             $Hashtable = @{ One = '1'; Two = '2'; Three = '3'; Four = '4' }
 
             @( 'One', '____', '____', '____' ) | Should -BeIn $Hashtable.Keys
-            @( '__', '__', '__', '__' ) | Should -BeIn $Hashtable.Values
+            @( __, __, __, __ ) | Should -BeIn $Hashtable.Values
         }
 
         It 'is not ordered' {
@@ -141,14 +141,14 @@ Describe 'Hashtables' {
             $Hashtable = [ordered]@{ One = 1; Two = 2; Three = 3; Four = 4 }
 
             # The [ordered] tag is not in itself properly a type, but transforms our regular hashtable into...
-            $Hashtable | Should -BeOfType '__'
+            $Hashtable | Should -BeOfType '____'
 
             <#
                 Order comes at a price; in this case, lookup speed is significantly decreased with
                 ordered hashtables.
                 Does this leave our keys and values in the order you would expect?
             #>
-            @( '__', 'Two', '__', '__' ) | Should -Be $Hashtable.Keys.ForEach{ $_ }
+            @( '____', 'Two', '____', '____' ) | Should -Be $Hashtable.Keys.ForEach{ $_ }
             @( 1, , , 4 ) | Should -Be $Hashtable.Values.ForEach{ $_ }
 
             # The [ordered] tag changes the type of the object completely.
@@ -166,8 +166,8 @@ Describe 'Hashtables' {
             $Hashtable.Remove('One')
 
             __ | Should -Be $Hashtable.Count
-            $Hashtable.Keys | Should -BeIn @('__', '__', 'Four')
-            $Hashtable.Values | Should -BeIn @( , , 4)
+            $Hashtable.Keys | Should -BeIn @('____', '____', 'Four')
+            $Hashtable.Values | Should -BeIn @(__ ,__ , 4)
         }
 
         It 'can check if keys or values are present in the hashtable' {
@@ -185,15 +185,15 @@ Describe 'Hashtables' {
         It 'will not implicitly convert keys and lookup values' {
             $Hashtable = @{ 0 = 'Zero' }
 
-            '__' | Should -Be $Hashtable[0]
-            '__' | Should -Be $Hashtable['0']
+            '____' | Should -Be $Hashtable[0]
+            '____' | Should -Be $Hashtable['0']
         }
 
         It 'can access values by using keys like properties' {
             $Hashtable = @{ 0 = 'Zero'; Name = 'Jim' }
-            $Key = '__'
+            $Key = '____'
 
-            '__' | Should -Be $Hashtable.0
+            '____' | Should -Be $Hashtable.0
             'Jim' | Should -Be $Hashtable.$Key
         }
     }

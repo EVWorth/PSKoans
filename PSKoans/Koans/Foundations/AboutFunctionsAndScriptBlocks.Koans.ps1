@@ -49,7 +49,7 @@ Describe 'Functions' {
             12
         }
 
-        __ | Should -Be (Get-Number)
+        ____ | Should -Be (Get-Number)
         Get-ReturnedNumber | Should -Be 13
         __ | Should -Be (Get-DroppedNumber)
     }
@@ -61,7 +61,7 @@ Describe 'Functions' {
         }
 
         # Values are supplied separated by spaces, without parentheses.
-        Add-Things '7' __ | Should -Be '72' # Strings add differently than numbers!
+        Add-Things '7' '____' | Should -Be '72' # Strings add differently than numbers!
         __ | Should -Be (Add-Things 1 2)
 
         # The road to mastery is travelled with many small steps.

@@ -4,7 +4,7 @@ param()
 <#
     Conditionals and Branching
 
-    Conditionals operate with language keywords like if, else, and switch, and utilise
+    Conditionals operate with language keywords like if, else, and switch, and utilize
     boolean statements to determine program control flow.
 
     Due to how PowerShell handles output, its conditional statements can return output
@@ -28,7 +28,7 @@ Describe 'If/Else' {
                 }
             }
 
-            Assert-IsEven -Number 2 | Should -Be '__'
+            Assert-IsEven -Number 2 | Should -Be '____'
             Assert-IsEven -Number __ | Should -Be 'ODD'
         }
 
@@ -59,7 +59,7 @@ Describe 'If/Else' {
                 # but depending on the outcome of the conditional, either could end up stored!
                 "$Thing is less than 5"
             }
-            __ | Should -Be ($Result)
+            ____ | Should -Be ($Result)
         }
 
         It 'can also apply a condition to an else' {
@@ -73,7 +73,7 @@ Describe 'If/Else' {
                 -1
             }
             $Value += 1
-            __ | Should -Be ($Value)
+            ____ | Should -Be ($Value)
         }
     }
 }
@@ -106,7 +106,7 @@ Describe 'Switch' {
                 }
             }
 
-            $Amount | Should -Be '__'
+            $Amount | Should -Be '____'
         }
     }
     Context 'Assigning Values' {
@@ -128,7 +128,7 @@ Describe 'Switch' {
             }
 
             $Variable | Should -Be -1
-            $Variable | Should -BeOfType [__]
+            $Variable | Should -BeOfType [____]
         }
 
         It 'can go through multiple branches' {
@@ -142,7 +142,7 @@ Describe 'Switch' {
                     2
                 }
             }
-            __ | Should -Be ($Values)
+            ____ | Should -Be ($Values)
         }
     }
 
@@ -192,7 +192,7 @@ Describe 'Switch' {
     Context 'Types of Switch' {
 
         It 'accepts wildcard conditions' {
-            $Condition = __
+            $Condition = '____'
             # ... but only if you ask nicely, that is!
             $Result = switch -Wildcard ($Condition) {
                 # Wildcarded switches work with * for multiple characters
@@ -204,12 +204,12 @@ Describe 'Switch' {
                 }
             }
 
-            $Result | Should -Be '__'
+            $Result | Should -Be '____'
         }
 
         It 'accepts regex conditions' {
             # Enter a regex string that matches the pattern to pass the test.
-            $Value = '__'
+            $Value = '____'
             $Pattern = "a.*z.n"
             <#
                 If you need a regex refresher, check out https://regexr.com/
